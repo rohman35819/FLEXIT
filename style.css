@@ -217,7 +217,40 @@ button[type="submit"]:hover {
 .btn-output:hover {
   background-color: #0056b3;
 }
+
 @media (max-width: 767px) {
+  body {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    margin-bottom: 18px;
+  }
+
+  form {
+    padding: 18px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input, select {
+    padding: 9px;
+    font-size: 13.5px;
+  }
+
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+
+  .header-grid, .row-grid {
+    grid-template-columns: repeat(3, 1fr);
+    font-size: 14px;
+  }
+
+  /* Suck Grid - versi HP besar dan sedang */
   .suck-grid {
     gap: 0.3rem;
   }
@@ -234,13 +267,92 @@ button[type="submit"]:hover {
 
   .suck-grid label.label-left {
     width: 45px;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .suck-grid input, .suck-grid select {
     flex: 1 1 60px;
     max-width: 60px;
-    font-size: 12px;
-    padding: 5px 6px;
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  button[type="submit"],
+  .btn-output {
+    font-size: 15px;
+    padding: 10px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  label {
+    font-size: 13.5px;
+  }
+
+  input, select {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .header-grid, .row-grid {
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 13px;
+  }
+
+  .suck-grid .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .suck-grid label.label-left {
+    width: auto;
+    margin-bottom: 4px;
+  }
+
+  .suck-grid input,
+  .suck-grid select {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  button[type="submit"],
+  .btn-output {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  label {
+    font-size: 13px;
+  }
+
+  input, select {
+    font-size: 12.5px;
+    padding: 7px;
+  }
+
+  .header-grid, .row-grid {
+    grid-template-columns: 1fr;
+    font-size: 12.5px;
+  }
+
+  button[type="submit"],
+  .btn-output {
+    font-size: 14px;
+    padding: 9px 12px;
   }
 }
