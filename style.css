@@ -128,6 +128,7 @@ input:focus, select:focus {
   text-align: center;
 }
 
+/* Contoh grid untuk holding (3 kolom) */
 .holding-header, .holding-row {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -142,7 +143,7 @@ input:focus, select:focus {
 
 .suck-grid .row {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Tetap nowrap supaya tidak pindah baris */
   align-items: center;
   gap: 10px;
 }
@@ -166,15 +167,8 @@ input:focus, select:focus {
 .suck-grid select {
   flex: 1 1 60px;
   text-align: center;
-}
-
-@media (min-width: 768px) {
-  .suck-grid {
-    flex-direction: column;
-  }
-  .suck-grid .row {
-    flex-wrap: nowrap;
-  }
+  min-width: 50px;
+  max-width: 80px;
 }
 
 /* Tombol Simpan */
@@ -208,6 +202,7 @@ button[type="submit"]:hover {
 #notifikasi.show {
   opacity: 1;
 }
+
 .btn-output {
   background-color: #007bff;
   color: white;
@@ -221,4 +216,31 @@ button[type="submit"]:hover {
 
 .btn-output:hover {
   background-color: #0056b3;
+}
+@media (max-width: 767px) {
+  .suck-grid {
+    gap: 0.3rem;
+  }
+
+  .suck-grid .row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+  }
+
+  .suck-grid .row > *:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  .suck-grid label.label-left {
+    width: 45px;
+    font-size: 12px;
+  }
+
+  .suck-grid input, .suck-grid select {
+    flex: 1 1 60px;
+    max-width: 60px;
+    font-size: 12px;
+    padding: 5px 6px;
+  }
 }

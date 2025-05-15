@@ -94,3 +94,36 @@ form.addEventListener('submit', async (e) => {
     alert('Gagal menyimpan data: ' + error.message)
   }
 })
+
+
+//*step*//
+document.addEventListener('DOMContentLoaded', () => {
+  const selectStep = document.getElementById('jumlah-step');
+  
+  function updateInjectionInputs() {
+    const stepCount = parseInt(selectStep.value);
+    ['injection-spd', 'injection-prs', 'injection-mm'].forEach(id => {
+      const container = document.getElementById(id);
+      if (!container) return;
+      const inputs = container.querySelectorAll('input[data-step]');
+      inputs.forEach(input => {
+        const step = parseInt(input.getAttribute('data-step'));
+        if (step <= stepCount) {
+          input.style.display = 'inline-block';
+        } else {
+          input.style.display = 'none';
+          input.value = ''; // bersihkan nilai yang tidak dipakai
+        }
+      });
+    });
+  }
+
+  // Jalankan pertama kali
+  updateInjectionInputs();
+
+  // Event change pada select
+  selectStep.addEventListener('change', updateInjectionInputs);
+});
+
+
+
