@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Output Setingan Inject</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+    }
+    h1, h2, h3 {
+      margin-top: 2rem;
+      color: #007bff;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    th {
+      background-color: #f0f8ff;
+    }
+    .section {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Data Setingan Mesin Injection</h1>
+
+  <div class="section">
+    <h2>Nama Produk</h2>
+    <p id="output-nama-produk">Tutup Botol A</p>
+  </div>
+
+  <div class="section">
+    <h2>Injection</h2>
+    <table>
+      <tr>
+        <th>Label</th>
+        <th>5st</th>
+        <th>4nd</th>
+        <th>3rd</th>
+        <th>2th</th>
+        <th>1th</th>
+      </tr>
+      <tr><td>SPD</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+      <tr><td>PRS</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+      <tr><td>MM</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Holding Pressure</h2>
+    <table>
+      <tr>
+        <th>Label</th>
+        <th>1st</th>
+        <th>2nd</th>
+      </tr>
+      <tr><td>SPD</td><td>...</td><td>...</td></tr>
+      <tr><td>PRS</td><td>...</td><td>...</td></tr>
+      <tr><td>TIME</td><td>...</td><td>...</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Tambahan Parameter</h2>
+    <table>
+      <tr><td>Inject Delay Time</td><td>...</td></tr>
+      <tr><td>Inject Time</td><td>...</td></tr>
+      <tr><td>Holding PRS Select</td><td>...</td></tr>
+      <tr><td>Hold Tranf PRS</td><td>...</td></tr>
+      <tr><td>Inject Stage Set</td><td>...</td></tr>
+      <tr><td>Hold Stage Set</td><td>...</td></tr>
+      <tr><td>Inject Gate Use</td><td>Yes</td></tr>
+      <tr><td>Inject Fast Valve Use</td><td>No</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Charge & Suck</h2>
+    <table>
+      <tr><th>Label</th><th>1st</th><th>2nd</th><th>3rd</th><th>4th</th></tr>
+      <tr><td>SPD</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+      <tr><td>POS</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+      <tr><td>BPrs</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Suck Back</h2>
+    <table>
+      <tr><th>Label</th><th>Suck 1</th><th>Suck 2</th></tr>
+      <tr><td>SPD</td><td>...</td><td>...</td></tr>
+      <tr><td>POS</td><td>...</td><td>...</td></tr>
+      <tr><td>BPrs</td><td>Yes</td><td>No</td></tr>
+    </table>
+  </div>
+  
+  <div class="section">
+    <h2>Cooling Time</h2>
+    <table>
+      <tr><td>Cooling Time</td><td>...</td></tr>
+    
+    </table>
+  </div>
+
+
+  <div class="section">
+    <h2>Temperature</h2>
+    <table>
+      <tr><td>NOZZLE</td><td>...</td></tr>
+      <tr><td>Heater 1</td><td>...</td></tr>
+      <tr><td>Heater 2</td><td>...</td></tr>
+      <tr><td>Heater 3</td><td>...</td></tr>
+      <tr><td>Heater 4</td><td>...</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>MTC</h2>
+    <table>
+      <tr><td>MTC 1</td><td>...</td></tr>
+      <tr><td>MTC 2</td><td>...</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>Hot Runner</h2>
+    <table>
+      <tr><td>Hotrunner 1</td><td>...</td></tr>
+      <tr><td>Hotrunner 2</td><td>...</td></tr>
+      <tr><td>Hotrunner 3</td><td>...</td></tr>
+      <tr><td>Hotrunner 4</td><td>...</td></tr>
+      <tr><td>Hotrunner 5</td><td>...</td></tr>
+      <tr><td>Hotrunner 6</td><td>...</td></tr>
+    </table>
+  </div>
+
+  
+
+  <div class="section">
+    <h2>Keterangan</h2>
+    <p>...</p>
+  </div>
+  <!-- Memuat Supabase terlebih dahulu -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6/dist/supabase.js"></script>
+
+<!-- Kemudian, memuat skrip output.js yang bergantung pada Supabase -->
+
+
+<script type="module" src="output.js"></script>
+ 
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Input Setelan Mesin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .form-grid-1col {
+      display: grid;
+      gap: 1rem;
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .header-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+    h2 {
+      margin-top: 2rem;
+      color: #007bff;
+    }
+    input, select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1 style="text-align:center;">Form Setelan Mesin Injection</h1>
+  <form id="form-setelan" class="form-grid-1col">
+
+    <!-- Nama Produk -->
+    <label for="nama-produk">Nama Produk:</label>
+    <input type="text" id="nama-produk" name="nama_produk" required />
+
+    <!-- Jumlah Step -->
+    <label for="jumlah-step">Jumlah Step:</label>
+    <select id="jumlah-step" name="jumlah_step">
+      <option value="3">3 Step</option>
+      <option value="4">4 Step</option>
+      <option value="5" selected>5 Step</option>
+    </select>
+
+    <!-- Injection SPD -->
+    <h2>Injection SPD</h2>
+    <div class="header-grid">
+      <label>SPD</label>
+      <input type="number" name="spd_1st" />
+      <input type="number" name="spd_2st" />
+      <input type="number" name="spd_3st" />
+      <input type="number" name="spd_4st" />
+      <input type="number" name="spd_5st" />
+    </div>
+
+    <!-- PRS -->
+    <div class="header-grid">
+      <label>PRS</label>
+      <input type="number" name="prs_1st" />
+      <input type="number" name="prs_2st" />
+      <input type="number" name="prs_3st" />
+      <input type="number" name="prs_4st" />
+      <input type="number" name="prs_5st" />
+    </div>
+
+    <!-- MM -->
+    <div class="header-grid">
+      <label>MM</label>
+      <input type="number" name="mm_1st" />
+      <input type="number" name="mm_2st" />
+      <input type="number" name="mm_3st" />
+      <input type="number" name="mm_4st" />
+      <input type="number" name="mm_5st" />
+    </div>
+
+    <!-- Holding -->
+    <h2>Holding</h2>
+    <div class="header-grid">
+      <label>SPD</label>
+      <input type="number" name="holding_spd1" placeholder="1st" />
+      <input type="number" name="holding_spd2" placeholder="2nd" />
+    </div>
+    <div class="header-grid">
+      <label>PRS</label>
+      <input type="number" name="holding_prs1" placeholder="1st" />
+      <input type="number" name="holding_prs2" placeholder="2nd" />
+    </div>
+    <div class="header-grid">
+      <label>Time</label>
+      <input type="number" step="0.01" name="holding_time1" placeholder="1st" />
+      <input type="number" step="0.01" name="holding_time2" placeholder="2nd" />
+    </div>
+
+    <!-- Timing -->
+    <h2>Waktu & Tahap Inject</h2>
+    <label>Inject Delay Time:</label>
+    <input type="number" name="inject_delay_time" />
+    <label>Inject Time:</label>
+    <input type="number" name="inject_time" />
+    <label>Holding PRS Select:</label>
+    <select name="holding_prs_select">
+      <option value="position">Position</option>
+      <option value="time">Time</option>
+    </select>
+    <label>Hold Transfer PRS:</label>
+    <input type="number" name="hold_tranf_prs" />
+    <label>Inject Stage Set:</label>
+    <input type="number" name="inject_stage_set" />
+    <label>Hold Stage Set:</label>
+    <input type="number" name="hold_stage_set" />
+    <label>Inject Gate Use:</label>
+    <select name="inject_gate_use">
+      <option value="">-- Pilih --</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <label>Inject Fast Valve Use:</label>
+    <select name="inject_fast_valve_use">
+      <option value="">-- Pilih --</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+
+    <!-- Charge & Suck -->
+    <h2>Charge & Suck</h2>
+    <div class="header-grid">
+      <label>SPD</label>
+      <input type="number" name="charge_suck_spd1" placeholder="1st" />
+      <input type="number" name="charge_suck_spd2" placeholder="2nd" />
+      <input type="number" name="charge_suck_spd3" placeholder="3rd" />
+      <input type="number" name="charge_suck_spd4" placeholder="4th" />
+    </div>
+    <div class="header-grid">
+      <label>MM</label>
+      <input type="number" name="charge_suck_mm1" placeholder="1st" />
+      <input type="number" name="charge_suck_mm2" placeholder="2nd" />
+      <input type="number" name="charge_suck_mm3" placeholder="3rd" />
+      <input type="number" name="charge_suck_mm4" placeholder="4th" />
+    </div>
+    <div class="header-grid">
+      <label>BAR</label>
+      <input type="number" name="charge_suck_bar1" placeholder="1st" />
+      <input type="number" name="charge_suck_bar2" placeholder="2nd" />
+      <input type="number" name="charge_suck_bar3" placeholder="3rd" />
+      <input type="number" name="charge_suck_bar4" placeholder="4th" />
+    </div>
+
+    <!-- Suck Back -->
+    <h2>Suck Back</h2>
+    <div class="header-grid">
+      <label>SPD</label>
+      <input type="number" name="suck_back_spd1" />
+      <input type="number" name="suck_back_spd2" />
+    </div>
+    <div class="header-grid">
+      <label>Position</label>
+      <input type="number" name="suck_back_pos1" />
+      <input type="number" name="suck_back_pos2" />
+    </div>
+    <div class="header-grid">
+      <label>BPRS</label>
+      <select name="suck_back_bprs1">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <select name="suck_back_bprs2">
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <!-- Cooling -->
+    <label>Cooling Time:</label>
+    <input type="number" name="cooling_time" />
+
+    <!-- Nozzle & Heater -->
+    <h2>Nozzle & Heater</h2>
+    <label>Nozzle:</label>
+    <input type="number" name="nozzle" />
+    <label>Heater 1-4:</label>
+    <div class="header-grid">
+      <input type="number" name="heater1" placeholder="1" />
+      <input type="number" name="heater2" placeholder="2" />
+      <input type="number" name="heater3" placeholder="3" />
+      <input type="number" name="heater4" placeholder="4" />
+    </div>
+
+    <!-- MTC -->
+    <label>MTC 1 & 2:</label>
+    <div class="form-grid-2col">
+      <input type="number" name="mtc1" placeholder="MTC 1" />
+      <input type="number" name="mtc2" placeholder="MTC 2" />
+    </div>
+
+    <!-- Hotrunner -->
+    <h2>Hotrunner</h2>
+    <label>Channel 1 - 10:</label>
+    <div class="header-grid">
+      <input type="number" name="hotrunner_channel_1" />
+      <input type="number" name="hotrunner_channel_2" />
+      <input type="number" name="hotrunner_channel_3" />
+      <input type="number" name="hotrunner_channel_4" />
+      <input type="number" name="hotrunner_channel_5" />
+      <input type="number" name="hotrunner_channel_6" />
+      <input type="number" name="hotrunner_channel_7" />
+      <input type="number" name="hotrunner_channel_8" />
+      <input type="number" name="hotrunner_channel_9" />
+      <input type="number" name="hotrunner_channel_10" />
+    </div>
+
+    <!-- Keterangan -->
+    <label for="keterangan">Keterangan Tambahan:</label>
+    <textarea id="keterangan" name="keterangan" rows="4" placeholder="Isi keterangan tambahan di sini..."></textarea>
+
+    <button type="submit">Simpan Setelan</button>
+    <button onclick="window.location.href='output.html'" class="btn-output">DATA STELAN MESIN</button>
+
+    <script type="module" src="main.js"></script>
+  </form>
+</body>
+</html>

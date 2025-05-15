@@ -1,0 +1,224 @@
+:root {
+  --main-color: #007bff;
+  --bg-color: #e0f7fa;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f4f9fc, var(--bg-color));
+  padding: 20px;
+  color: #333;
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--main-color);
+  animation: fadeInDown 1s ease-in-out;
+}
+
+h2, h3 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 30px;
+}
+
+h2::before, h3::before {
+  content: '';
+  background-image: url('icon-inject.svg');
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+form {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: auto;
+  animation: fadeIn 0.7s ease;
+}
+
+/* Input dan Label */
+label {
+  font-weight: 600;
+  margin-top: 10px;
+  display: block;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #b2dfdb;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 5px rgba(16, 132, 137, 0.3);
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* Grid Layouts */
+.form-grid-2col, .form-grid-1col {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.form-grid-2col {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.form-grid-1col {
+  grid-template-columns: 1fr;
+}
+
+/* Table Grid */
+.header-grid, .row-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.header-grid {
+  background-color: rgba(16, 132, 137, 0.1);
+  padding: 8px;
+  font-weight: bold;
+  color: var(--main-color);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.row-grid input {
+  text-align: center;
+}
+
+.holding-header, .holding-row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Suck Grid Responsive */
+.suck-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.suck-grid .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.suck-grid label.label-left {
+  width: 60px;
+  font-weight: bold;
+}
+
+.suck-grid .label-header, 
+.suck-grid .label-suck {
+  font-weight: bold;
+  color: var(--main-color);
+}
+
+.suck-grid .gap {
+  flex: 1 1 20px;
+}
+
+.suck-grid input, 
+.suck-grid select {
+  flex: 1 1 60px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .suck-grid {
+    flex-direction: column;
+  }
+  .suck-grid .row {
+    flex-wrap: nowrap;
+  }
+}
+
+/* Tombol Simpan */
+button[type="submit"] {
+  background-color: var(--main-color);
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: block;
+  margin: 30px auto 0;
+}
+
+button[type="submit"]:hover {
+  background-color: #005bb5;
+}
+
+/* Notifikasi */
+#notifikasi {
+  transition: opacity 0.5s ease;
+  opacity: 0;
+  margin-top: 20px;
+  text-align: center;
+  color: green;
+  font-weight: bold;
+}
+
+#notifikasi.show {
+  opacity: 1;
+}
+.btn-output {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-output:hover {
+  background-color: #0056b3;
+}

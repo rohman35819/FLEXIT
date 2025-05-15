@@ -1,0 +1,48 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f9;
+}
+
+h1 {
+  color: #007bff;
+}
+
+#setelan-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.setelan-item {
+  background-color: white;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.setelan-item h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.setelan-item p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.setelan-item a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.setelan-item a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  #setelan-container {
+    grid-template-columns: 1fr;
+  }
+}
