@@ -1,25 +1,85 @@
-.table-container {
-  overflow-x: auto;
-  margin: 20px;
+/* output-tampilan.css */
+:root {
+  --primary: #007bff;
+  --toska: #1abc9c;
+  --background: #f8f9fa;
+  --text-color: #333;
+  --label-color: #555;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-th, td {
-  border: 1px solid #007bff;
-  padding: 8px 10px;
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+  padding: 20px;
+  line-height: 1.6;
+}
+
+h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--primary);
+  border-left: 6px solid var(--toska);
+  padding-left: 12px;
+}
+
+.header-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.header-grid label {
+  font-weight: 600;
+  color: var(--label-color);
+  grid-column: 1 / -1;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed var(--toska);
+  padding-bottom: 4px;
+}
+
+.header-grid span {
+  background-color: #f1f1f1;
+  padding: 8px;
+  border-radius: 8px;
   text-align: center;
+  font-weight: 500;
+  color: #222;
+  transition: background-color 0.3s ease;
 }
 
-th {
-  background-color: #007bff;
-  color: white;
+.header-grid span:hover {
+  background-color: var(--toska);
+  color: #fff;
 }
 
-tr:nth-child(even) {
-  background-color: #f2f2f2;
+/* Responsive Design */
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  .header-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    padding: 12px;
+  }
+
+  .header-grid span {
+    font-size: 0.95rem;
+    padding: 6px;
+  }
 }

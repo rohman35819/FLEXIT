@@ -1,85 +1,129 @@
-// output.js
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 const supabaseUrl = 'https://qxtusmvrupffinszflij.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4dHVzbXZydXBmZmluc3pmbGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2NDc3ODEsImV4cCI6MjA2MjIyMzc4MX0.0y0EWd0CG3NcKO5icbyczeakDMN57UIBGrBBTX2x1Z8'; // Ganti dengan anon key kamu
-const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+const supabaseKey =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4dHVzbXZydXBmZmluc3pmbGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2NDc3ODEsImV4cCI6MjA2MjIyMzc4MX0.0y0EWd0CG3NcKO5icbyczeakDMN57UIBGrBBTX2x1Z8';
 
-async function fetchData() {
-  const { data, error } = await supabase
+const client = createClient(supabaseUrl, supabaseKey);
+
+const outputContainer = document.getElementById('output-container');
+const searchInput = document.getElementById('searchInput');
+
+async function fetchData(keyword = '') {
+  let q = client
     .from('notes')
-    .select('*')
-    .order('id', { ascending: false });
+    .select('id, nama_produk, created_at')
+    .order('created_at', { ascending: false });
 
+  if (keyword.trim()) q = q.ilike('nama_produk', `%${keyword}%`);
+
+  const { data, error } = await q;
   if (error) {
-    console.error('❌ Gagal mengambil data:', error.message);
-    return;
+    console.error(error);
+    return [];
   }
-
-  tampilkanDataLengkap(data);
+  return data;
 }
 
-function tampilkanDataLengkap(data) {
-  const container = document.getElementById('output-container');
-  container.innerHTML = '';
-
-  data.forEach((item) => {
-    const div = document.createElement('div');
-    div.style.border = '1px solid #ccc';
-    div.style.padding = '15px';
-    div.style.margin = '10px';
-    div.style.borderRadius = '10px';
-    div.style.backgroundColor = '#f5faff';
-
-    div.innerHTML = `
-      <h2>🛠️ ${item.nama_produk}</h2>
-
-      <h4>Injection:</h4>
-      SPD: ${item.spd_1st}, ${item.spd_2st}, ${item.spd_3st}, ${item.spd_4st}, ${item.spd_5st}<br>
-      PRS: ${item.prs_1st}, ${item.prs_2st}, ${item.prs_3st}, ${item.prs_4st}, ${item.prs_5st}<br>
-      MM: ${item.mm_1st}, ${item.mm_2st}, ${item.mm_3st}, ${item.mm_4st}, ${item.mm_5st}
-
-      <h4>Holding:</h4>
-      SPD: ${item.holding_spd1}, ${item.holding_spd2}<br>
-      PRS: ${item.holding_prs1}, ${item.holding_prs2}<br>
-      Time: ${item.holding_time1}, ${item.holding_time2}<br>
-      PRS Select: ${item.holding_prs_select}<br>
-      Hold Tranf PRS: ${item.hold_tranf_prs}
-
-      <h4>Waktu:</h4>
-      Inject Delay: ${item.inject_delay_time}<br>
-      Inject Time: ${item.inject_time}
-
-      <h4>Fitur:</h4>
-      Inject Stage Set: ${item.inject_stage_set}<br>
-      Hold Stage Set: ${item.hold_stage_set}<br>
-      Gate Use: ${item.inject_gate_use}<br>
-      Fast Valve Use: ${item.inject_fast_valve_use}
-
-      <h4>Charge & Suck:</h4>
-      Charge SPD: ${item.charge_suck_spd1}, ${item.charge_suck_spd2}, ${item.charge_suck_spd3}, ${item.charge_suck_spd4}<br>
-      Charge MM: ${item.charge_suck_mm1}, ${item.charge_suck_mm2}, ${item.charge_suck_mm3}, ${item.charge_suck_mm4}<br>
-      Charge BAR: ${item.charge_suck_bar1}, ${item.charge_suck_bar2}, ${item.charge_suck_bar3}, ${item.charge_suck_bar4}
-
-      <h4>Suck Back:</h4>
-      SPD: ${item.suck_back_spd1}, ${item.suck_back_spd2}<br>
-      POS: ${item.suck_back_pos1}, ${item.suck_back_pos2}<br>
-      BPRS: ${item.suck_back_bprs1}, ${item.suck_back_bprs2}
-
-      <h4>Temperatur:</h4>
-      Cooling Time: ${item.cooling_time}<br>
-      Nozzle: ${item.nozzle}<br>
-      Heater 1-4: ${item.heater1}, ${item.heater2}, ${item.heater3}, ${item.heater4}
-
-      <h4>MTC & Hotrunner:</h4>
-      MTC1: ${item.mtc1}, MTC2: ${item.mtc2}<br>
-      Hotrunner CH 1–6: ${item.hotrunner_channel_1}, ${item.hotrunner_channel_2}, ${item.hotrunner_channel_3}, ${item.hotrunner_channel_4}, ${item.hotrunner_channel_5}, ${item.hotrunner_channel_6}
-
-      <h4>Keterangan:</h4>
-      ${item.keterangan || '-'}
-    `;
-
-    container.appendChild(div);
+function formatDate(iso) {
+  return new Date(iso).toLocaleDateString('id-ID', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
   });
 }
 
-fetchData();
+function renderData(rows) {
+  outputContainer.innerHTML = '';
+
+  if (!rows.length) {
+    outputContainer.innerHTML = '<p>Tidak ada data ditemukan.</p>';
+    return;
+  }
+
+  rows.forEach((row) => {
+    const wrap = document.createElement('div');
+    wrap.style.display = 'flex';
+    wrap.style.justifyContent = 'space-between';
+    wrap.style.alignItems = 'center';
+    wrap.style.padding = '10px';
+    wrap.style.border = '1px solid #ccc';
+    wrap.style.borderRadius = '5px';
+    wrap.style.marginBottom = '10px';
+    wrap.style.position = 'relative';
+
+    const link = document.createElement('a');
+    link.href = `output-tampilan.html?id=${row.id}`;
+    link.textContent = row.nama_produk;
+    link.style.flexGrow = '1';
+    link.style.color = '#007bff';
+    link.style.textDecoration = 'none';
+    link.style.marginRight = '12px';
+
+    const small = document.createElement('small');
+    small.textContent = `Dibuat: ${formatDate(row.created_at)}`;
+    small.style.marginRight = '12px';
+    small.style.color = '#555';
+
+    // Tombol titik tiga
+    const menuButton = document.createElement('button');
+    menuButton.textContent = '⋮';
+    menuButton.style.border = 'none';
+    menuButton.style.background = 'transparent';
+    menuButton.style.cursor = 'pointer';
+    menuButton.style.fontSize = '18px';
+
+    // Menu kecil hapus
+    const menu = document.createElement('div');
+    menu.textContent = 'Hapus';
+    menu.style.position = 'absolute';
+    menu.style.top = '40px';
+    menu.style.right = '10px';
+    menu.style.background = '#e74c3c';
+    menu.style.color = '#fff';
+    menu.style.padding = '6px 12px';
+    menu.style.borderRadius = '4px';
+    menu.style.cursor = 'pointer';
+    menu.style.display = 'none';
+    menu.style.zIndex = '10';
+    menu.style.boxShadow = '0 2px 6px rgba(0,0,0,0.2)';
+
+    menuButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Klik luar area untuk menutup menu
+    document.addEventListener('click', () => {
+      menu.style.display = 'none';
+    });
+
+    // Tombol Hapus aktif
+    menu.addEventListener('click', async () => {
+      if (!confirm(`Hapus data "${row.nama_produk}"?`)) return;
+      const { error } = await client.from('notes').delete().eq('id', row.id);
+      if (error) {
+        alert('Gagal menghapus: ' + error.message);
+        return;
+      }
+      const fresh = await fetchData(searchInput.value);
+      renderData(fresh);
+    });
+
+    wrap.appendChild(link);
+    wrap.appendChild(small);
+    wrap.appendChild(menuButton);
+    wrap.appendChild(menu);
+    outputContainer.appendChild(wrap);
+  });
+}
+
+searchInput.addEventListener('input', async () => {
+  const rows = await fetchData(searchInput.value);
+  renderData(rows);
+});
+
+(async () => {
+  const rows = await fetchData();
+  renderData(rows);
+})();

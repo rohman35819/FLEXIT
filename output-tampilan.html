@@ -1,164 +1,189 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Output Setingan Inject</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 1rem;
-    }
-    h1, h2, h3 {
-      margin-top: 2rem;
-      color: #007bff;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 1.5rem;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    th {
-      background-color: #f0f8ff;
-    }
-    .section {
-      margin-bottom: 2rem;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>output-tampilan</title>
+  <link rel="stylesheet" href="output-tampilan.css" />
 </head>
 <body>
-  <h1>Data Setingan Mesin Injection</h1>
+  <!-- OUTPUT TAMPILAN SETELAN MESIN INJECTION PLASTIK -->
 
-  <div class="section">
-    <h2>Nama Produk</h2>
-    <p id="output-nama-produk">Tutup Botol A</p>
-  </div>
+<!-- NAMA PRODUK -->
+<h2>Nama Produk</h2>
+<div class="header-grid" id="output-nama-produk">
+  <label>Nama Produk</label>
+  <span id="nama_produk">-</span>
+</div>
 
-  <div class="section">
-    <h2>Injection</h2>
-    <table>
-      <tr>
-        <th>Label</th>
-        <th>5st</th>
-        <th>4nd</th>
-        <th>3rd</th>
-        <th>2th</th>
-        <th>1th</th>
-      </tr>
-      <tr><td>SPD</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-      <tr><td>PRS</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-      <tr><td>MM</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- INJECTION SPD -->
+<h2>Injection SPD</h2>
+<div class="header-grid" id="output-injection-spd">
+  <label>SPD</label>
+  <span id="spd_1st">-</span>
+  <span id="spd_2st">-</span>
+  <span id="spd_3st">-</span>
+  <span id="spd_4st">-</span>
+  <span id="spd_5st">-</span>
+</div>
 
-  <div class="section">
-    <h2>Holding Pressure</h2>
-    <table>
-      <tr>
-        <th>Label</th>
-        <th>1st</th>
-        <th>2nd</th>
-      </tr>
-      <tr><td>SPD</td><td>...</td><td>...</td></tr>
-      <tr><td>PRS</td><td>...</td><td>...</td></tr>
-      <tr><td>TIME</td><td>...</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- INJECTION PRS -->
+<div class="header-grid" id="output-injection-prs">
+  <label>PRS</label>
+  <span id="prs_1st">-</span>
+  <span id="prs_2st">-</span>
+  <span id="prs_3st">-</span>
+  <span id="prs_4st">-</span>
+  <span id="prs_5st">-</span>
+</div>
 
-  <div class="section">
-    <h2>Tambahan Parameter</h2>
-    <table>
-      <tr><td>Inject Delay Time</td><td>...</td></tr>
-      <tr><td>Inject Time</td><td>...</td></tr>
-      <tr><td>Holding PRS Select</td><td>...</td></tr>
-      <tr><td>Hold Tranf PRS</td><td>...</td></tr>
-      <tr><td>Inject Stage Set</td><td>...</td></tr>
-      <tr><td>Hold Stage Set</td><td>...</td></tr>
-      <tr><td>Inject Gate Use</td><td>Yes</td></tr>
-      <tr><td>Inject Fast Valve Use</td><td>No</td></tr>
-    </table>
-  </div>
+<!-- INJECTION MM -->
+<div class="header-grid" id="output-injection-mm">
+  <label>MM</label>
+  <span id="mm_1st">-</span>
+  <span id="mm_2st">-</span>
+  <span id="mm_3st">-</span>
+  <span id="mm_4st">-</span>
+  <span id="mm_5st">-</span>
+</div>
 
-  <div class="section">
-    <h2>Charge & Suck</h2>
-    <table>
-      <tr><th>Label</th><th>1st</th><th>2nd</th><th>3rd</th><th>4th</th></tr>
-      <tr><td>SPD</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-      <tr><td>POS</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-      <tr><td>BPrs</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- HOLDING -->
+<h2>Holding</h2>
+<div class="header-grid" id="output-holding">
+  <label>Holding PRS</label>
+  <span id="holding_prs1">-</span>
+  <span id="holding_prs2">-</span>
+</div>
+<div class="header-grid" id="output-holding-spd">
+  <label>Holding SPD</label>
+  <span id="holding_spd1">-</span>
+  <span id="holding_spd2">-</span>
+</div>
+<div class="header-grid" id="output-holding-time">
+  <label>Holding Time</label>
+  <span id="holding_time1">-</span>
+  <span id="holding_time2">-</span>
+</div>
 
-  <div class="section">
-    <h2>Suck Back</h2>
-    <table>
-      <tr><th>Label</th><th>Suck 1</th><th>Suck 2</th></tr>
-      <tr><td>SPD</td><td>...</td><td>...</td></tr>
-      <tr><td>POS</td><td>...</td><td>...</td></tr>
-      <tr><td>BPrs</td><td>Yes</td><td>No</td></tr>
-    </table>
-  </div>
-  
-  <div class="section">
-    <h2>Cooling Time</h2>
-    <table>
-      <tr><td>Cooling Time</td><td>...</td></tr>
-    
-    </table>
-  </div>
+<!-- INJECT SETTINGS -->
+<h2>Inject Settings</h2>
+<div class="header-grid" id="output-inject-settings">
+  <label>Delay Time</label>
+  <span id="inject_delay_time">-</span>
+  <label>Inject Time</label>
+  <span id="inject_time">-</span>
+  <label>PRS Select</label>
+  <span id="holding_prs_select">-</span>
+  <label>Hold Transfer PRS</label>
+  <span id="hold_tranf_prs">-</span>
+  <label>Inject Stage Set</label>
+  <span id="inject_stage_set">-</span>
+  <label>Hold Stage Set</label>
+  <span id="hold_stage_set">-</span>
+  <label>Gate Use</label>
+  <span id="inject_gate_use">-</span>
+  <label>Fast Valve Use</label>
+  <span id="inject_fast_valve_use">-</span>
+</div>
 
+<!-- CHARGING & SUCK -->
+<h2>Charging & Suck</h2>
+<div class="header-grid" id="output-charge-suck-spd">
+  <label>Charge Suck SPD</label>
+  <span id="charge_suck_spd1">-</span>
+  <span id="charge_suck_spd2">-</span>
+  <span id="charge_suck_spd3">-</span>
+  <span id="charge_suck_spd4">-</span>
+</div>
+<div class="header-grid" id="output-charge-suck-mm">
+  <label>Charge Suck MM</label>
+  <span id="charge_suck_mm1">-</span>
+  <span id="charge_suck_mm2">-</span>
+  <span id="charge_suck_mm3">-</span>
+  <span id="charge_suck_mm4">-</span>
+</div>
+<div class="header-grid" id="output-charge-suck-bar">
+  <label>Charge Suck BAR</label>
+  <span id="charge_suck_bar1">-</span>
+  <span id="charge_suck_bar2">-</span>
+  <span id="charge_suck_bar3">-</span>
+  <span id="charge_suck_bar4">-</span>
+</div>
+<div class="header-grid" id="output-suck-back">
+  <label>Suck Back SPD</label>
+  <span id="suck_back_spd1">-</span>
+  <span id="suck_back_spd2">-</span>
+  <label>Suck Back POS</label>
+  <span id="suck_back_pos1">-</span>
+  <span id="suck_back_pos2">-</span>
+  <label>Suck Back BPRS</label>
+  <span id="suck_back_bprs1">-</span>
+  <span id="suck_back_bprs2">-</span>
+</div>
 
-  <div class="section">
-    <h2>Temperature</h2>
-    <table>
-      <tr><td>NOZZLE</td><td>...</td></tr>
-      <tr><td>Heater 1</td><td>...</td></tr>
-      <tr><td>Heater 2</td><td>...</td></tr>
-      <tr><td>Heater 3</td><td>...</td></tr>
-      <tr><td>Heater 4</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- COOLING & NOZZLE -->
+<h2>Cooling & Nozzle</h2>
+<div class="header-grid" id="output-cooling-nozzle">
+  <label>Cooling Time</label>
+  <span id="cooling_time">-</span>
+  <label>Nozzle</label>
+  <span id="nozzle">-</span>
+</div>
 
-  <div class="section">
-    <h2>MTC</h2>
-    <table>
-      <tr><td>MTC 1</td><td>...</td></tr>
-      <tr><td>MTC 2</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- HEATER -->
+<h2>Heater</h2>
+<div class="header-grid" id="output-heater">
+  <label>Heater 1</label>
+  <span id="heater1">-</span>
+  <label>Heater 2</label>
+  <span id="heater2">-</span>
+  <label>Heater 3</label>
+  <span id="heater3">-</span>
+  <label>Heater 4</label>
+  <span id="heater4">-</span>
+</div>
 
-  <div class="section">
-    <h2>Hot Runner</h2>
-    <table>
-      <tr><td>Hotrunner 1</td><td>...</td></tr>
-      <tr><td>Hotrunner 2</td><td>...</td></tr>
-      <tr><td>Hotrunner 3</td><td>...</td></tr>
-      <tr><td>Hotrunner 4</td><td>...</td></tr>
-      <tr><td>Hotrunner 5</td><td>...</td></tr>
-      <tr><td>Hotrunner 6</td><td>...</td></tr>
-    </table>
-  </div>
+<!-- MTC -->
+<h2>MTC</h2>
+<div class="header-grid" id="output-mtc">
+  <label>MTC 1</label>
+  <span id="mtc1">-</span>
+  <label>MTC 2</label>
+  <span id="mtc2">-</span>
+</div>
 
-  
+<!-- HOTRUNNER -->
+<h2>Hotrunner</h2>
+<div class="header-grid" id="output-hotrunner">
+  <label>Channel 1-10</label>
+  <span id="hotrunner_channel_1">-</span>
+  <span id="hotrunner_channel_2">-</span>
+  <span id="hotrunner_channel_3">-</span>
+  <span id="hotrunner_channel_4">-</span>
+  <span id="hotrunner_channel_5">-</span>
+  <span id="hotrunner_channel_6">-</span>
+  <span id="hotrunner_channel_7">-</span>
+  <span id="hotrunner_channel_8">-</span>
+  <span id="hotrunner_channel_9">-</span>
+  <span id="hotrunner_channel_10">-</span>
+</div>
 
-  <div class="section">
-    <h2>Keterangan</h2>
-    <p>...</p>
-  </div>
-  <!-- Memuat Supabase terlebih dahulu -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@1.35.6/dist/supabase.js"></script>
+<!-- KETERANGAN -->
+<h2>Keterangan</h2>
+<div class="header-grid" id="output-keterangan">
+  <label>Keterangan</label>
+  <span id="keterangan">-</span>
+</div>
 
-<!-- Kemudian, memuat skrip output.js yang bergantung pada Supabase -->
+<!-- JUMLAH STEP -->
+<h2>Jumlah Step</h2>
+<div class="header-grid" id="output-jumlah-step">
+  <label>Jumlah Step</label>
+  <span id="jumlah_step">-</span>
+</div>
 
-
-<script type="module" src="output.js"></script>
- 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
+<script type="module" src="output-tampilan.js"></script>
 
 </body>
 </html>
