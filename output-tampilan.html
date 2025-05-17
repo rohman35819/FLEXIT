@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>output-tampilan</title>
   <link rel="stylesheet" href="output-tampilan.css" />
+  
 </head>
 <body>
   <!-- OUTPUT TAMPILAN SETELAN MESIN INJECTION PLASTIK -->
@@ -184,6 +185,40 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/supabase.min.js"></script>
 <script type="module" src="output-tampilan.js"></script>
+
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+const supabase = createClient(
+  'https://qxtusmvrupffinszflij.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4dHVzbXZydXBmZmluc3pmbGlqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY2NDc3ODEsImV4cCI6MjA2MjIyMzc4MX0.0y0EWd0CG3NcKO5icbyczeakDMN57UIBGrBBTX2x1Z8'
+);
+
+async function loadNote() {
+  const id = new URLSearchParams(location.search).get('id');
+  if (!id) return;
+
+  // ambil data & render
+  const { data, error } = await supabase
+    .from('notes')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) { console.error(error); return; }
+  document.getElementById('nama_produk').textContent = data.nama_produk;
+  // …render kolom lain…
+}
+
+/* 1️⃣  dijalankan pada pemuatan awal DOM */
+window.addEventListener('DOMContentLoaded', loadNote);
+
+/* 2️⃣  dijalankan lagi jika halaman kembali dari bfcache */
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) loadNote();
+});
+</script>
+
 
 </body>
 </html>

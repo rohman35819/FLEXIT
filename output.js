@@ -127,3 +127,4 @@ searchInput.addEventListener('input', async () => {
   const rows = await fetchData();
   renderData(rows);
 })();
+link.href = `output-tampilan.html?id=${row.id}&t=${Date.now()}`;
